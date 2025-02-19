@@ -3,7 +3,8 @@
 ### Demo
 
 # Flutter in VSCode
-![F1](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F0.png)
+![F0](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F0.png)
+![F04](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F04.png)
 ![F1](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F1.png)
 ![F2](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F2.png)
 ![F3](https://github.com/Kritchanaxt/Flutter-CameraApp/blob/main/image/F3.png)
