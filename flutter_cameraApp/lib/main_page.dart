@@ -43,6 +43,15 @@ class _MyPageState extends State<MyPage> {
         CropAspectRatioPreset.ratio7x5,
         CropAspectRatioPreset.ratio16x9,
       ],
+      uiSettings: [
+          AndroidUiSettings(
+      toolbarTitle: 'Crop Image',
+      lockAspectRatio: false,
+    ),
+    IOSUiSettings(
+      title: 'Crop Image',
+    ),
+  ],
     );
     return croppedFile?.path;
   }

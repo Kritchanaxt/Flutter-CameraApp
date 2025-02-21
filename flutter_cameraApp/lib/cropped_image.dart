@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
+// import 'package:image_cropper/image_cropper.dart';
 
 class CroppedImage extends StatefulWidget {
   final String imagePath; // ใช้ imagePath แทน
