@@ -31,34 +31,57 @@ class _MyPageState extends State<MyPage> {
     }
   }
 
+// โค้ดนี้รองรับเฉพาะ image_cropper เวอร์ชัน 8.x.x หรือต่ำกว่าเท่านั้น
+/*
   Future<String?> cropImage(XFile image) async {
-    final CroppedFile? croppedFile = await ImageCropper().cropImage(
-      sourcePath: image.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio5x4,
-        CropAspectRatioPreset.ratio7x5,
-        CropAspectRatioPreset.ratio16x9,
-      ],
-      uiSettings: [
-        AndroidUiSettings(
-          toolbarTitle: "Crop Image",
-          toolbarColor: Colors.teal,
-          toolbarWidgetColor: Colors.white,
-          initAspectRatio: CropAspectRatioPreset.original,
-          lockAspectRatio: false,
-        ),
-        IOSUiSettings(
-          title: "Crop Image",
-        ),
-      ],
-      
-    );
-    return croppedFile?.path;
-  }
+  final CroppedFile? croppedFile = await ImageCropper().cropImage(
+    sourcePath: image.path,
+    aspectRatioPresets: [
+      CropAspectRatioPreset.square,
+      CropAspectRatioPreset.original,
+      CropAspectRatioPreset.ratio3x2,
+      CropAspectRatioPreset.ratio4x3,
+      CropAspectRatioPreset.ratio5x4,
+      CropAspectRatioPreset.ratio7x5,
+      CropAspectRatioPreset.ratio16x9,
+    ],
+    uiSettings: [
+      AndroidUiSettings(
+        toolbarTitle: "Crop Image",
+        toolbarColor: Colors.teal,
+        toolbarWidgetColor: Colors.white,
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: false,
+      ),
+      IOSUiSettings(
+        title: "Crop Image",
+      ),
+    ],
+  );
+
+  return croppedFile?.path;
+}
+*/
+
+Future<String?> cropImage(XFile image) async {
+  final CroppedFile? croppedFile = await ImageCropper().cropImage(
+    sourcePath: image.path,
+    aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), // กำหนดอัตราส่วน
+    uiSettings: [
+      AndroidUiSettings(
+        toolbarTitle: "Crop Image",
+        toolbarColor: Colors.teal,
+        toolbarWidgetColor: Colors.white,
+        lockAspectRatio: false, // ให้ผู้ใช้ปรับขนาดเองได้
+      ),
+      IOSUiSettings(
+        title: "Crop Image",
+      ),
+    ],
+  );
+
+  return croppedFile?.path;
+}
 
   @override
   Widget build(BuildContext context) {

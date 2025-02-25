@@ -22,27 +22,27 @@ android {
         applicationId = "com.example.flutter_camerapp"
         minSdk = project.findProperty("flutter.minSdkVersion")?.toString()?.toInt() ?: 21
         targetSdk = project.findProperty("flutter.targetSdkVersion")?.toString()?.toInt() ?: 34
-        versionCode = project.findProperty("flutter.versionCode")?.toString()?.toInt() ?: 1
-        versionName = project.findProperty("flutter.versionName")?.toString() ?: "1.0.0"
+        versionCode = project.findProperty("flutter.versionCode")?.toString()?.toInt() ?: 2
+        versionName = project.findProperty("flutter.versionName")?.toString() ?: "1.1.0"
     }
 
     signingConfigs {
-    create("release") {
-        storeFile = file("../keystore/my-release-key.jks") // ใช้ path ที่ถูกต้อง
-        storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "default-password"
-        keyAlias = System.getenv("KEY_ALIAS") ?: "myKeyWafer"
-        keyPassword = System.getenv("KEY_PASSWORD") ?: "default-key-password"
+        create("release") {
+            storeFile = file("~/Flutter-CameraApp/flutter_cameraApp/android/app/my-new-release-key.jks")
+            storePassword = project.findProperty("KEYSTORE_PASSWORD")?.toString()
+            keyAlias = "KEY_ALIAS"
+            keyPassword = project.findProperty("KEY_PASSWORD")?.toString()
+        }
     }
-}
 
-buildTypes {
-    release {
-        isMinifyEnabled = false
-        isShrinkResources = false
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
-}
-
-
 }
 
 flutter {
